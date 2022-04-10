@@ -13,10 +13,11 @@ x_train <- fread("./UCI HAR Dataset/train/X_train.txt", col.names = features$fea
 y_train <- fread("./UCI HAR Dataset/train/y_train.txt", col.names = "code")
 y_test <- fread("./UCI HAR Dataset/test/y_test.txt", col.names = "code")
 
+x_test <- fread("./UCI HAR Dataset/test/X_test.txt", col.names = features$feature)
 ################################################################################
 # 1. Merges the training and the test sets to create one data set.
 ################################################################################
-
+library(dplyr)
 y_train2 <- y_train %>% left_join(activities, by="code")
 y_test2 <- y_test %>% left_join(activities, by="code")
 
